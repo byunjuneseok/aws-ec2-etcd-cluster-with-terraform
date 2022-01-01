@@ -13,7 +13,15 @@ module "vpc" {
     enable_vpn_gateway = true
 
     tags = {
+        Name = "${var.cluster_name}"
         Terraform = "true"
         Environment = "${var.environment}"
+    }
+
+    private_subnet_tags = {
+        Private = true
+    }
+    public_subnet_tags = {
+        Private = false
     }
 }
