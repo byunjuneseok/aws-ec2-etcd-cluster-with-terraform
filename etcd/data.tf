@@ -10,3 +10,10 @@ data "aws_subnet_ids" "private" {
     Private = true
   }
 }
+
+data "aws_subnet_ids" "public" {
+  vpc_id = "${data.aws_vpc.cluster_vpc.id}"
+  tags = {
+    Private = false
+  }
+}
