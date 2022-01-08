@@ -25,6 +25,9 @@ $ terraform apply
 $ terraform destroy
 ```
 
+## TO-DO
+- Certification
+
 
 ## Reference
 - https://cloudinit.readthedocs.io/en/latest/

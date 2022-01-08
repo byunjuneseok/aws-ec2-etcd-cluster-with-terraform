@@ -4,5 +4,9 @@
 
 ## Build networks
 🔗 [`./networks`](./networks)
-- Build networks with terraform
 
+Build networks with terraform
+
+🛢 [`./etcd`](./etcd)
+
+Build secure, distributed, highly available etcd cluster that’s ready for a production-grade!
