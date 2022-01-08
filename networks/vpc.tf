@@ -2,8 +2,8 @@ module "vpc" {
     source  = "terraform-aws-modules/vpc/aws"
     version = "3.11.0"
 
-    name = "${var.cluster_name}"
-    cidr = "${var.vpc_cidr_block}"
+    name = var.cluster_name
+    cidr = var.vpc_cidr_block
 
     azs             = var.vpc_azs
     private_subnets = var.vpc_private_subnets
@@ -13,9 +13,9 @@ module "vpc" {
     enable_vpn_gateway = true
 
     tags = {
-        Name = "${var.cluster_name}"
+        Name = var.cluster_name
         Terraform = "true"
-        Environment = "${var.environment}"
+        Environment = var.environment
     }
 
     private_subnet_tags = {

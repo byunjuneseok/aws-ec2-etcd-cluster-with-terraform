@@ -1,6 +1,6 @@
 resource "aws_security_group" "etcd" {
   name = "${var.cluster_name}-etcd"
-  vpc_id = "${data.aws_vpc.cluster_vpc.id}"
+  vpc_id = data.aws_vpc.cluster_vpc.id
 
   ingress {
     from_port = 0
@@ -24,8 +24,8 @@ resource "aws_security_group" "etcd" {
   }
 
   tags = {
-    Name = "${var.cluster_name}"
+    Name = var.cluster_name
     Terraform = "true"
-    Environment = "${var.environment}"
+    Environment = var.environment
   }
 }

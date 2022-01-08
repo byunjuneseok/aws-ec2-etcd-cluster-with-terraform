@@ -7,7 +7,7 @@ data "cloudinit_config" "user_data" {
       "${path.module}/cloud-config.tftpl",
       {
         cluster_name = var.cluster_name
-        discovery_etcd_url = "${file("discovery-etcd-url.txt")}"
+        discovery_etcd_url = file("discovery-etcd-url.txt")
       }
     )
   }
