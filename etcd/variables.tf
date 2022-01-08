@@ -36,5 +36,11 @@ variable "aws_instance_type" {
 
 variable "aws_instance_count" {
   type = number
-  description = "Count of etcd instance(s)"
+  description = "Count of etcd instance(s), Usually the cluster size is 3, 5 or 7."
+}
+
+variable "etcd_version" {
+  type = string
+  description = "Version of etcd, starts with v"
+  default = "v3.5.1"
 }

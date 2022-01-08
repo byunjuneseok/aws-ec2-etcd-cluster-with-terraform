@@ -1,0 +1,21 @@
+# cloud-config
+
+write_files:
+  - path: /home/ubuntu/done
+    owner: root:root
+    permissions: 0644
+    content: |
+      ${discovery_etcd_url}, ${instance_count}
+
+runcmd:
+  - curl -L https://storage.googleapis.com/etcd/${etcd_version}/etcd-${etcd_version}-linux-amd64.tar.gz -o /tmp/etcd-${etcd_version}-linux-amd64.tar.gz
+  - mkdir /tmp/etcd-downloads
+  - tar xzvf /tmp/etcd-${etcd_version}-linux-amd64.tar.gz -C /tmp/etcd-downloads --strip-components=1
+  - mv /tmp/etcd-downloads/etcd /usr/local/bin
+  - mv /tmp/etcd-downloads/etcdctl /usr/local/bin
+  - rm -f /tmp/etcd-${etcd_version}-linux-amd64.tar.gz
+
+  - LOCAL_IP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+  - etcd --name etcd${instance_count} --initial-advertise-peer-urls http://$LOCAL_IP:2380 --listen-peer-urls http://$LOCAL_IP:2380 --listen-client-urls http://$LOCAL_IP:2379,http://127.0.0.1:2379 --advertise-client-urls http://$LOCAL_IP:2379 --discovery ${discovery_etcd_url}
+
+output : { all : '| tee -a /var/log/cloud-init-output.log' }

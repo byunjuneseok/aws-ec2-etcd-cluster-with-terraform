@@ -10,7 +10,11 @@
 ## How to build
 ```
 $ generate-ssh-key.sh
+
+# Set `size` query parameter with the numbers of cluster instances.
+$ vim generate-discovery-etcd-url.sh 
 $ generate-discovery-etcd-url.sh
+
 $ terraform init
 $ terraform plan
 $ terraform apply
@@ -25,3 +29,5 @@ $ terraform destroy
 ## Reference
 - https://cloudinit.readthedocs.io/en/latest/
 - https://www.terraform.io/language/functions/templatefile
+- https://etcd.io/docs/v3.4/platforms/aws/
+- https://etcd.io/docs/v3.4/op-guide/clustering/#etcd-discovery

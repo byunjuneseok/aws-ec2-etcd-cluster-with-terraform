@@ -4,10 +4,11 @@ data "cloudinit_config" "user_data" {
   part {
     content_type = "text/cloud-config"
     content = templatefile(
-      "${path.module}/cloud-config.tftpl",
+      "${path.module}/cloud-config.yml",
       {
-        cluster_name = var.cluster_name
         discovery_etcd_url = file("discovery-etcd-url.txt")
+        instance_count = count.index
+        etcd_version = var.etcd_version
       }
     )
   }
