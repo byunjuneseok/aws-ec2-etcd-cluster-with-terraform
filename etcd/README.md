@@ -1,5 +1,7 @@
 # `etcd` Cluster
 
+![logo](./static/etcd.svg)
+
 ## Objectives
 - Provision etcd cluster
 
