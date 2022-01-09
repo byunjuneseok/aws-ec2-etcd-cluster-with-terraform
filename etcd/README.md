@@ -10,11 +10,6 @@
 ## How to build
 ```
 $ generate-ssh-key.sh
-
-# Set `size` query parameter with the numbers of cluster instances.
-$ vim generate-discovery-etcd-url.sh 
-$ generate-discovery-etcd-url.sh
-
 $ terraform init
 $ terraform plan
 $ terraform apply

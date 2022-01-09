@@ -17,3 +17,7 @@ data "aws_subnet_ids" "public" {
     Private = false
   }
 }
+
+data "http" "etcd-discovery-url" {
+  url = "https://discovery.etcd.io/new?size=${var.aws_instance_count}"
+}

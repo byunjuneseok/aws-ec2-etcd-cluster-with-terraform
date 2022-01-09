@@ -6,7 +6,7 @@ data "cloudinit_config" "user_data" {
     content = templatefile(
       "${path.module}/cloud-config.yml",
       {
-        discovery_etcd_url = file("discovery-etcd-url.txt")
+        discovery_etcd_url = data.http.etcd-discovery-url.body
         instance_count = count.index
         etcd_version = var.etcd_version
       }
