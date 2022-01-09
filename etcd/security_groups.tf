@@ -1,6 +1,6 @@
 resource "aws_security_group" "etcd" {
   name = "${var.cluster_name}-etcd"
-  vpc_id = data.aws_vpc.cluster_vpc.id
+  vpc_id = module.vpc.vpc_id
 
   ingress {
     from_port = 0

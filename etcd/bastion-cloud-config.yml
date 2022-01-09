@@ -1,0 +1,9 @@
+# cloud-config
+runcmd:
+  - curl -L https://storage.googleapis.com/etcd/${etcd_version}/etcd-${etcd_version}-linux-amd64.tar.gz -o /tmp/etcd-${etcd_version}-linux-amd64.tar.gz
+  - mkdir /tmp/etcd-downloads
+  - tar xzvf /tmp/etcd-${etcd_version}-linux-amd64.tar.gz -C /tmp/etcd-downloads --strip-components=1
+  - mv /tmp/etcd-downloads/etcdctl /usr/local/bin
+  - rm -f /tmp/etcd-${etcd_version}-linux-amd64.tar.gz
+
+output : { all : '| tee -a /var/log/cloud-init-output.log' }

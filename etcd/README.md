@@ -8,20 +8,33 @@
 
 
 ## How to build
-```
-$ generate-ssh-key.sh
+```shell
 $ terraform init
 $ terraform plan
 $ terraform apply
 ```
 
-## How to destroy
+## Test with bastion instance
+
+### Test etcd instance via bastion instance
+```shell
+$ ssh -A -i agd-etcd.pem -J <BASTION-USER>@<BASTION-PUBLIC-IP> <ETCD-USER>@<ETCD-PRIVATE-IP>
 ```
+
+### Test etcd cluster at bastion instance
+```shell
+$  curl -X POST <ALB-URL>:2379/v3/cluster/member/list
+```
+
+
+## How to destroy
+```shell
 $ terraform destroy
 ```
 
 ## TO-DO
 - Certification
+- gRPC Load balancer
 
 
 ## Reference

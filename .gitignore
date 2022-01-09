@@ -38,6 +38,5 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-etcd/keys/
-
-etcd/discovery-etcd-url.txt
+# Generated keys
+*.pem
