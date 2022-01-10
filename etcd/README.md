@@ -8,6 +8,9 @@
 ## Prerequisite
 - terraform
 
+## Architecture diagram
+![diagram](./static/diagram.png)
+
 
 ## How to build
 ```shell
