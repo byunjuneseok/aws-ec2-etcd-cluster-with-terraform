@@ -14,7 +14,6 @@ data "cloudinit_config" "bastion_instance" {
   }
 }
 
-
 data "cloudinit_config" "etcd_instance" {
   count = var.etcd_instance_count
 
