@@ -1,4 +1,4 @@
-# `etcd` Cluster
+# `etcd` Cluster @AWS EC2
 
 ![logo](./static/etcd.svg)
 
