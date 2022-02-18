@@ -1,12 +1,49 @@
-# Self managed K8s Cluster on AWS
-> Sorry, Linux. Kubernetes is now the OS that matters! ⛴
+# `etcd` Cluster
+
+![logo](./static/etcd.svg)
+
+## Objectives
+- Provision etcd cluster
+
+## Prerequisite
+- terraform
+
+## Architecture diagram
+![diagram](./static/diagram.png)
 
 
-## Build networks
-🔗 [`./networks`](./networks)
+## How to build
+```shell
+$ terraform init
+$ terraform plan
+$ terraform apply
+```
 
-Build networks with terraform
+## Test with bastion instance
 
-🛢 [`./etcd`](./etcd)
+### Test etcd instance via bastion instance
+```shell
+$ ssh -A -i agd-etcd.pem -J <BASTION-USER>@<BASTION-PUBLIC-IP> <ETCD-USER>@<ETCD-PRIVATE-IP>
+```
 
-Build secure, distributed, highly available etcd cluster that’s ready for a production-grade!
+### Test etcd cluster at bastion instance
+```shell
+$  curl -X POST <ALB-URL>:2379/v3/cluster/member/list
+```
+
+
+## How to destroy
+```shell
+$ terraform destroy
+```
+
+## TO-DO
+- Certification
+- gRPC Load balancer
+
+
+## Reference
+- https://cloudinit.readthedocs.io/en/latest/
+- https://www.terraform.io/language/functions/templatefile
+- https://etcd.io/docs/v3.4/platforms/aws/
+- https://etcd.io/docs/v3.4/op-guide/clustering/#etcd-discovery
